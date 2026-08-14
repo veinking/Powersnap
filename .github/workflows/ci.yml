@@ -14,11 +14,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Check JavaScript syntax
-        run: node --check app.js
+        run: |
+          node --check core.js
+          node --check app.js
+      - name: Test diagnosis and cleanup engine
+        run: node tests/core.test.js
       - name: Verify required app files
         run: |
           test -s index.html
           test -s styles.css
+          test -s core.js
           test -s app.js
           grep -q 'fileInput' index.html
           grep -q 'PowerSnap' index.html
+          grep -q 'core.js' index.html
