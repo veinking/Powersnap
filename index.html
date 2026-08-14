@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>PowerSnap by PocketBI</title>
+  <meta name="description" content="Instant CSV diagnosis and cleanup for business data." />
+  <link rel="stylesheet" href="./styles.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <main class="wrap">
+    <header class="topbar">
+      <strong>PowerSnap <span>by PocketBI</span></strong>
+      <small>No sign-up required</small>
+    </header>
+
+    <section class="hero">
+      <p class="eyebrow">Instant data quality check</p>
+      <h1>Find what is breaking your data.</h1>
+      <p>Upload a CSV, see the biggest structural problems, understand the business impact, and export a cleaned copy.</p>
+    </section>
+
+    <section class="panel">
+      <label class="drop" id="dropZone" for="fileInput">
+        <div>
+          <div class="icon">↥</div>
+          <h2>Drop a CSV here</h2>
+          <p>Your file stays in the browser for this MVP.</p>
+          <span class="button">Choose CSV</span>
+          <input id="fileInput" type="file" accept=".csv,text/csv" />
+          <div id="fileMeta" class="meta"></div>
+        </div>
+      </label>
+
+      <div id="results" class="results hidden">
+        <div class="summary">
+          <article>
+            <small>Business impact</small>
+            <h2 id="impactTitle">Analyzing…</h2>
+            <p id="impactText"></p>
+          </article>
+          <article>
+            <small>Data quality score</small>
+            <div class="score"><strong id="score">—</strong><span>/100</span></div>
+          </article>
+        </div>
+        <div class="issues">
+          <h2>What PowerSnap found</h2>
+          <div id="issueList"></div>
+        </div>
+        <footer>
+          <span id="rowMeta" class="meta"></span>
+          <div class="actions">
+            <button id="resetBtn" class="secondary">Analyze another</button>
+            <button id="fixBtn">Fix & download CSV</button>
+          </div>
+        </footer>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
